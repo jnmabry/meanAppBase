@@ -25,4 +25,11 @@ export class PostsComponent implements OnInit {
     });
   }
 
+  createPost(postObject: any) {
+    this._postsService.createPost(postObject)
+      .then( response => {
+        console.log(response);
+      });
+  }
+
 }

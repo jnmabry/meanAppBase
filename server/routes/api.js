@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 // const todos = require('../../mock/todos.json');
 var Todo = require('../../server/models/todos.js');
+// Database connection from database.js file
+const db = require('../../server/database.js');
 
 // declare axios for making http requests
 const axios = require('axios');
@@ -15,15 +17,28 @@ router.get('/', (req, res) => {
 
 // Get all posts
 router.get('/posts', (req, res) => {
-  // Get posts from the mock api
-  // This should ideally be replaced with a service that connects to MongoDB
-  axios.get(`${API}/posts`)
-    .then(posts => {
-      res.status(200).json(posts.data);
+  // Get posts from the remote db
+  db.collection('animals').find().toArray(function (err, result) {
+    if (err) throw res.status(500).send(error)
+    res.status(200).json(result);
+    console.log(result)
     })
-    .catch(error => {
-      res.status(500).send(error)
-    });
+});
+
+// Post a post
+router.post('/posts', (req, res) => {
+  var animal = req.body
+  console.log('Adding animal: ' + animal.type);
+  // Get posts from the remote db
+    db.collection('animals')
+        .insert(animal, {safe:true}, function(err, result) {
+            if (err) {
+                res.send({'error':'An error has occurred'});
+            } else {
+                console.log('Success: ' + result);
+                res.send(result);
+            }
+        });
 });
 
 // Get Todos List

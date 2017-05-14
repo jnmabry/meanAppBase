@@ -1,3 +1,9 @@
-<p>
-  posts works!
-</p>
+<div *ngFor="let posts of allPosts"> 
+  <h1>{{posts.type}}</h1>
+  <h2>Maybe</h2>
+</div>
+
+<div>
+  <input type="text">
+  <button (click)="createPost(postObject)">Submit That Shit</button>
+</div>

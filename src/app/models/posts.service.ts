@@ -17,4 +17,17 @@ export class PostsService {
       });
   }
 
+  createPost(postObject: any) {
+    return this._http.post('api/posts', postObject, { headers: this.headers() })
+      .toPromise()
+      .then(re => { console.log(re.json()); return re.json() })
+      .catch(e => { console.log(e.json()); return e.json() })
+  }
+
+  headers(): Headers {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return headers;
+  }
+
 }
