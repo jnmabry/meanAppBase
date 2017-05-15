@@ -57,26 +57,4 @@ router.post('/posts', (req, res) => {
 
 });
 
-// Get Todos List
-router.get('/todos', (req, res) =>{
-  Todo.find({}, function (err,todos) {
-    if(err) {
-      return res.status(500).json({message: err.message});
-    }
-      res.json({todos: todos})
-  }); 
-});
-
-// Create New Todos
-router.post('/todos', (req, res) => {
-  var todo = req.body;
-  // Store New Todo in Database
-  Todo.create(todo, (err, todo) => {
-    if(err) {
-      return res.status(500).json({err: err.message});
-    }
-    res.json({'todo': todo, message: 'Todo Created'});
-  })
-});
-
 module.exports = router;
