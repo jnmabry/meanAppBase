@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-// const todos = require('../../mock/todos.json');
-var Todo = require('../../server/models/todos.js');
+
 var Post = require('../../server/models/posts.js');
 
 // Database connection from database.js file
