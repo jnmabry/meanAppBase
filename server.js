@@ -18,7 +18,6 @@ app.use(express.static(path.join(__dirname, 'dist')));
 
 // Get our Database
 require('./server/database');
-require('./server/seed');
 
 // Set our api routes
 app.use('/api', api);
