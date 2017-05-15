@@ -1,6 +1,10 @@
-<div *ngFor="let posts of allPosts"> 
-  <h1>{{posts.type}}</h1>
-  <h2>Maybe</h2>
+<h3>Please list your pet animal?</h3>
+<div *ngFor="let posts of allPosts; let i = index">
+  <span class="animal-type">{{i+1 + ".)" + " " + posts.type + "-"}}</span>
+  <br>
+  <span class="animal-stats">Age:{{+ " " + posts.age}}</span>
+  <span class="animal-stats">Color:{{+ " " + posts.color}}</span>
+  <br>
 </div>
 
 <div>
