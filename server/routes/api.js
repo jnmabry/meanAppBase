@@ -31,15 +31,22 @@ router.get('/posts', (req, res) => {
 router.post('/posts', (req, res) => {
   var animal = new Post(req.body);
   console.log('Adding animal: ' + animal.type);
-  // Mongoose knows to save the animal in the correct database collection // Connection is already open to database
-  // from the database.js file // This code is way shorten and requires less work than the long hand method below
+  // Mongoose knows to save the animal in the correct database collection
+  // Connection is already open to database from the database.js file
   animal.save(function (err, createdAnimalObject) {  
-    if (err) {
-        res.send(err);
-    }
+    if (err) throw res.send(err);
     // This createdTodoObject is the same one we saved, but after Mongo
     // added its additional properties like _id.
     res.send(createdAnimalObject);
+  });
+});
+
+// Delete a post
+router.delete('/posts', (req, res) => {
+  var animalId = req.body;
+  Post.findOneAndRemove(animalId, function(err) {
+    if (err) throw res.send(err);
+    res.status(200).json(animalId);
   });
 });
 
