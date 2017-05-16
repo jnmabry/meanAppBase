@@ -7,15 +7,12 @@ import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import { PostsComponent } from './screens/posts/posts.component';
 import { PostsService } from './models/posts.service';
-import { TodosService } from './models/todos.service';
-import { TodosComponent } from './screens/todos/todos.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PostsComponent,
-    TodosComponent
+    PostsComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +20,7 @@ import { TodosComponent } from './screens/todos/todos.component';
     HttpModule,
     routing
   ],
-  providers: [PostsService, TodosService],
+  providers: [PostsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
