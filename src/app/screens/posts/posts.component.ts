@@ -32,4 +32,9 @@ export class PostsComponent implements OnInit {
       });
   }
 
+  getInputValue(){
+    var inputValue = (<HTMLInputElement>document.getElementById("animal-input")).value;
+    this.createPost(inputValue);  
+    console.log(inputValue);
+  }
 }
