@@ -41,9 +41,9 @@ createPost(postObject: any) {
     });
 }
 
-getInputValue(){
-  var inputValue = (<HTMLInputElement>document.getElementById("animal-type")).value;
-  this.createPost(inputValue);
-  console.log(inputValue);
-}
+// getInputValue(){
+//   var inputValue = (<HTMLInputElement>document.getElementById("animal-type")).value;
+//   this.createPost(inputValue);
+//   console.log(inputValue);
+// }
 }
