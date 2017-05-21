@@ -8,6 +8,13 @@
 </div>
 
 <div>
-  <input type="text">
-  <button (click)="createPost(postObject)">Submit That Shit</button>
+  <form [formGroup]="postForm">
+    <input class="form-control" id="animal-type" type="text" placeholder="Type" formControlName="type">
+    <input class="form-control" id="animal-age" type="text" placeholder="Age" formControlName="age">
+    <input class="form-control" id="animal-color" type="text" placeholder="Color" formControlName="color">
+    <button class="form-control" type="sumbit" (click)="createPost(postForm.value)">Button</button>
+  </form>
+
+  {{ postForm.value | json }}
+    <!--<button (click)="createPost(postObject)">Submit That Shit</button>-->
 </div>
