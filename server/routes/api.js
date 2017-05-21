@@ -34,11 +34,22 @@ router.post('/posts', (req, res) => {
   // Mongoose knows to save the animal in the correct database collection
   // Connection is already open to database from the database.js file
   animal.save(function (err, createdAnimalObject) {  
-    if (err) throw res.send(err);
+    if (err) throw res.status(500).send(err);
     // This createdTodoObject is the same one we saved, but after Mongo
     // added its additional properties like _id.
     res.send(createdAnimalObject);
   });
+});
+
+// Update a post
+router.put('/posts', (req, res) => {
+  var updatedAnimal = req.body;
+  var animalId = req.body._id;
+  Post.findOneAndUpdate( { "_id":animalId } , updatedAnimal,
+    function (err, updatedAnimalObject) {  
+    if (err) throw res.status(500).send(err);
+      res.status(200).send(updatedAnimalObject);
+    });
 });
 
 // Delete a post
